@@ -9,13 +9,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("/saludar/{nombre?}",function ($nombre=""){
-	echo "hola $nombre";
+Route::get("/saludar/{nombre?}", function ($nombre = "") {
+    echo "hola $nombre";
 });
 
-Route::get('login',[PuertaController::class, 'login']);
-Route::post('validar',[PuertaController::class, 'validar'])->name('puerta.validar');
-
+Route::get('login', [PuertaController::class, 'login']);
+Route::post('validar', [PuertaController::class, 'validar'])->name('puerta.validar');
+Route::get('register', [UsuarioController::class, 'register'])->name('register');
+Route::post('register', [UsuarioController::class, 'store'])->name('register.store');
 
 //Route Model Binding
 //CRUD
@@ -42,14 +43,14 @@ Route::resource("usuarios", UsuarioController::class);
 
 
 
-Route::get('/usuarios/agregar',function (){
+Route::get('/usuarios/agregar', function () {
     return view('formulario');
 });
 
-Route::get('/usuarios/listar',function (){
+Route::get('/usuarios/listar', function () {
     return view('lista');
 });
 
-Route::get('/usuarios/listado',function (){
+Route::get('/usuarios/listado', function () {
     return view('listado');
 });
