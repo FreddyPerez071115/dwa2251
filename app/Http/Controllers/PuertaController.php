@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PuertaController extends Controller
 {
-    public function login(){
+    public function entrada(){
         return view ("puerta.login");
 
     }
@@ -25,10 +25,41 @@ class PuertaController extends Controller
         }else{
           if( Hash::check($request->clave , $encontrado->clave) ){
             Auth::login($encontrado);
-            echo "ok";
+            return redirect(route('puerta.inicio'));
           }else{
             echo "no te sabes la clave";
           }
         }
     }
+
+    public function registro(){
+        return view ("puerta.registro");
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function guardar(Request $request)
+    {
+        $nuevo = new Usuario();
+        $datos = $request->all();
+        if(isset($datos['clave'])) $datos['clave'] = Hash::make($datos['clave']);
+        $nuevo->fill($datos);
+        $nuevo->save();
+        Auth::login($nuevo);
+        return redirect(route('puerta.inicio'));
+    }
+
+    public function temporal(){
+      return view('bienvenido');
+    }
+
+    public function salir(){
+      Auth::logout();
+      return redirect('/');
+
+    }
+    
+
 }
