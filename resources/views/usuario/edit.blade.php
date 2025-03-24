@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <meta http-equiv="X-UA-Compatible" content="ie=edge">
- <title>Document</title>
-</head>
- EDITARE LA 
-
-<body>
+@extends('sistema.propuesta')
+@section('contenido')
  <form action="{{route('usuarios.update',$usuario->id)}}" method="post">
   @csrf
   @method('put')
@@ -19,5 +10,4 @@
   <label for='clave'>Clave</label>
   <input type='text' name='clave' id='clave'  value="{{$usuario->clave}}"><br>
   <input type="submit" value="ENVIAR"> </form>
-</body>
-</html>
+@endsection

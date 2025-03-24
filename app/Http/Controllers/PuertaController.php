@@ -52,7 +52,7 @@ class PuertaController extends Controller
     }
 
     public function temporal(){
-      return view('bienvenido');
+      return view('sistema.dashboard');
     }
 
     public function salir(){
