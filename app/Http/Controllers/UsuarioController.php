@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -32,8 +33,15 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $nuevo = new Usuario();
+<<<<<<< HEAD
         $nuevo->fill($request->all());
         $nuevo->clave = Hash::make($request->clave);
+=======
+
+        $datos = $request->all();        
+        $datos['clave'] = Hash::make($datos['clave']);
+        $nuevo->fill($datos);
+>>>>>>> upstream/master
         $nuevo->save();
         return redirect(route('usuarios.index'));
     }

@@ -13,10 +13,23 @@ Route::get("/saludar/{nombre?}", function ($nombre = "") {
     echo "hola $nombre";
 });
 
+<<<<<<< HEAD
 Route::get('login', [PuertaController::class, 'login']);
 Route::post('validar', [PuertaController::class, 'validar'])->name('puerta.validar');
 Route::get('register', [UsuarioController::class, 'register'])->name('register');
 Route::post('register', [UsuarioController::class, 'store'])->name('register.store');
+=======
+Route::get('registro',[PuertaController::class, 'registro'])->name('puerta.registro');
+Route::post('guardar',[PuertaController::class, 'guardar'])->name('puerta.guardar');
+
+Route::get('entrada',[PuertaController::class, 'entrada'])->name('puerta.entrada');
+Route::post('validar',[PuertaController::class, 'validar'])->name('puerta.validar');
+
+Route::get('inicio',[PuertaController::class, 'temporal'])->name('puerta.inicio');
+
+Route::get('salir',[PuertaController::class, 'salir'])->name('puerta.salir');
+
+>>>>>>> upstream/master
 
 //Route Model Binding
 //CRUD
