@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('nombre_usuario');
+            $table->string('nombre_usuario')->unique();
             $table->string('clave');
             $table->enum('tipo',['empleado','cliente','administrador'])->default('cliente');
             $table->string('token')->nullable()->default(null);

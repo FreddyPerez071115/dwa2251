@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreUsuarioRequest;
 
 class PuertaController extends Controller
 {
@@ -40,10 +41,10 @@ class PuertaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function guardar(Request $request)
+    public function guardar(StoreUsuarioRequest $request)
     {
         $nuevo = new Usuario();
-        $datos = $request->all();
+        $datos = $request->except('tipo');
         if(isset($datos['clave'])) $datos['clave'] = Hash::make($datos['clave']);
         $nuevo->fill($datos);
         $nuevo->save();
