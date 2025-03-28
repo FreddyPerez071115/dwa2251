@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('clave');
             $table->enum('tipo',['empleado','cliente','administrador'])->default('cliente');
             $table->string('token')->nullable()->default(null);
+            $table->string('correo')->nullable()->default(null);
+            $table->string('direccion')->nullable()->default(null);
             $table->timestamps();
         });
     }
