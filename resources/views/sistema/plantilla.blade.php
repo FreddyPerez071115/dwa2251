@@ -44,16 +44,24 @@
         </div>
         <div class="cuerpo">
             <div class="menu">
-                opciones
+                @switch(Auth::user()->tipo)
+                    @case('administrador')
+                        <li>Crear <a href="{{route('usuarios.index')}}">usuarios</a></li>
+                        @break
+                    @case('empleado')
+                        <li>Modificar <a href="{{route('usuarios.index')}}">usuarios</a></li>                    
+                        @break
+                    @default
+                        
+                @endswitch
             </div>
             <div class="contenido">
                 @yield('contenido')
-                
-                
             </div>
         </div>    
     @else
-        DEBE PRIMERO INICIAR <a href="{{route('puerta.entrada')}}/">SECION</a> O <a href="{{route('puerta.registro')}}">REGISTRARSE</a>     
+        landingpage<br>
+        DEBE PRIMERO INICIAR <a href="{{route('puerta.entrada')}}/">SESION</a> O <a href="{{route('puerta.registro')}}">REGISTRARSE</a>     
     @endauth
 </body>
 </html>

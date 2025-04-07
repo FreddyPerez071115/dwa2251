@@ -1,6 +1,5 @@
-@extends('sistema.propuesta')
+@extends('sistema.plantilla')
 @section('contenido')
-
  <form action="{{route('usuarios.store')}}" method="post">
   @csrf
   <label for='nombre'>Nombre</label>

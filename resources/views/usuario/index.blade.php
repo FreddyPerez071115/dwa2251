@@ -1,4 +1,4 @@
-@extends('sistema.propuesta')
+@extends('sistema.plantilla')
 @section('contenido')
 <table border="1">
   <thead>

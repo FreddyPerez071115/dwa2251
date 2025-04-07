@@ -6,7 +6,7 @@ use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('sistema.inicio');
 });
 
 Route::get("/saludar/{nombre?}",function ($nombre=""){
