@@ -26,5 +26,13 @@ class UsuarioSeeder extends Seeder
         $nuevo->clave = Hash::make("nimda");
         $nuevo->tipo = 'administrador';
         $nuevo->save();
+
+        $nuevo = new Usuario();
+        $nuevo->nombre = "Sergio Gomez";
+        $nuevo->nombre_usuario = "checo";
+        $nuevo->clave = Hash::make("checo");
+        $nuevo->tipo = 'empleado';
+        $nuevo->save();
+
     }
 }

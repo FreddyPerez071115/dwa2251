@@ -17,11 +17,16 @@
       
       <a href="{{route('usuarios.edit',$uno->id)}}">EDITAR</a>
       - 
-      <form action="{{route('usuarios.destroy',$uno->id)}}" method="post">
-        @csrf
-        @method('DELETE')
-        <input type="submit" value="BORRAR">
-      </form>
+      @can('delete', $uno )
+        <form action="{{route('usuarios.destroy',$uno->id)}}" method="post">
+          @csrf
+          @method('DELETE')
+          <input type="submit" value="BORRAR">
+        </form>
+
+
+      @endcan
+
 
 
     </td>
@@ -29,6 +34,10 @@
  @endforeach
  </tbody>
 </table>
-<a href="{{route('usuarios.create')}}">CREAR</a>
+@can('create',  "App\Models\Usuario" )
+  <a href="{{route('usuarios.create')}}">CREAR</a>    
+@endcan
+
+
   
 @endsection
