@@ -3,6 +3,7 @@
 use App\Http\Controllers\ComputadoraController;
 use App\Http\Controllers\PuertaController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\ConocidoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -46,6 +47,7 @@ Route::get('salir',[PuertaController::class, 'salir'])->name('puerta.salir');
 // // 
 Route::resource("computadoras", ComputadoraController::class);
 Route::resource("usuarios", UsuarioController::class);
+Route::resource("conocidos", ConocidoController::class);
 
 
 

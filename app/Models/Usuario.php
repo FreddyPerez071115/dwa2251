@@ -9,4 +9,8 @@ class Usuario extends Authenticatable
 {
     use HasFactory;
     protected $fillable = ['nombre','nombre_usuario', 'clave', 'tipo'];
+
+    public function conocido(){
+        return $this->hasOne(Conocido::class);        
+    }
 }

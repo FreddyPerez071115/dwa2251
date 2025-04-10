@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         ]);
 */
         $this->call(UsuarioSeeder::class);
+        $this->call(ConocidoSeeder::class);
         Usuario::factory(5)->create();
     }
 }
