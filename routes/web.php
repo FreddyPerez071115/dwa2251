@@ -49,8 +49,6 @@ Route::resource("computadoras", ComputadoraController::class);
 Route::resource("usuarios", UsuarioController::class);
 Route::resource("conocidos", ConocidoController::class);
 
-
-
 Route::get('/usuarios/agregar',function (){
     return view('formulario');
 });

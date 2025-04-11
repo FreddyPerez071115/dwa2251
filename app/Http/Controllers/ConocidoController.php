@@ -6,6 +6,8 @@ use App\Http\Requests\StoreConocidoRequest;
 use App\Http\Requests\UpdateConocidoRequest;
 use App\Models\Conocido;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ConocidoController extends Controller
 {
@@ -15,7 +17,9 @@ class ConocidoController extends Controller
     public function index()
     {
         //listar todos los usuarios
-        $todos = Conocido::all();
+        //$todos = Conocido::all();
+        $actual = Auth::user();
+        $todos = Conocido::where('usuario_id',$actual->id)->get();
         return view('conocido.index',compact('todos'));
     }
 
@@ -33,8 +37,9 @@ class ConocidoController extends Controller
     public function store(StoreConocidoRequest $request)
     {
         $nuevo = new Conocido();
-
+        $actual = Auth::user();
         $datos = $request->all();
+        $datos['usuario_id']=$actual->id;
         $nuevo->fill($datos);
         $nuevo->save();
         return redirect(route('conocidos.index'));
@@ -43,26 +48,29 @@ class ConocidoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Conocido $usuario)
+    public function show(Conocido $conocido)
     {
-        echo $usuario->toJson();
+        echo $conocido->toJson();
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Conocido $usuario)
+    public function edit(Conocido $conocido)
     {
-        return view('conocido.edit',compact('usuario'));
+        if (Gate::allows('update',$conocido))
+            return view('conocido.edit',compact('conocido'));
+        else
+            return view('sistema.ups');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateConocidoRequest $request, Conocido $usuario)
+    public function update(UpdateConocidoRequest $request, Conocido $conocido)
     {
-        $usuario->fill($request->all());
-        $usuario->save();
+        $conocido->fill($request->all());
+        $conocido->save();
         return redirect(route('conocidos.index'));
  
     }
@@ -70,9 +78,9 @@ class ConocidoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Conocido $usuario)
+    public function destroy(Conocido $conocido)
     {
-        $usuario->delete();
+        $conocido->delete();
         return redirect(route('conocidos.index'));
     }
 }

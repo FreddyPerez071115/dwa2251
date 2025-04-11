@@ -51,6 +51,9 @@
                     @case('empleado')
                         <li>Modificar <a href="{{route('usuarios.index')}}">usuarios</a></li>                    
                         @break
+                    @case('cliente')
+                        <li>Crear <a href="{{route('conocidos.index')}}">conocidos</a></li>                    
+                        @break
                     @default
                         
                 @endswitch

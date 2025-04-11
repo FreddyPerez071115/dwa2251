@@ -11,7 +11,7 @@ class Conocido extends Model
     use HasFactory;
     
     protected $fillable = ['nombre','usuario_id'];
-
+    protected $primaryKey = "id";
 
     public function usuario(){
         return $this->belongsTo(Usuario::class);

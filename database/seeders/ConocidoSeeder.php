@@ -28,10 +28,12 @@ class ConocidoSeeder extends Seeder
         $nuevo->usuario_id = 2;
         $nuevo->save();
 
+/*
         $nuevo = new Conocido();
         $nuevo->nombre="Concido4";
         $nuevo->usuario_id = 3;
         $nuevo->save();
+*/
         
     }
 }

@@ -37,7 +37,12 @@ class ConocidoPolicy
      */
     public function update(Usuario $usuario, Conocido $conocido): bool
     {
-        return false;
+        //cuando si puedo editar a un conocido
+        //si el usuario actual es el id se si puede modificar
+        if ($usuario->id == $conocido->usuario_id) 
+            return true;
+        else 
+            return false;
     }
 
     /**

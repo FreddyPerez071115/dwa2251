@@ -85,7 +85,7 @@ class UsuarioFactory extends Factory
 
         return [
             'nombre'=>$nombre . ' ' . $apellido,
-            'nombre_usuario'=> fake()->unique()->userName(),// $username,
+            'nombre_usuario'=>  $username, //fake()->unique()->userName(),
             'clave'=>Hash::make('123'),
             'correo'=>fake()->email(),
             'direccion'=>fake()->address(),
