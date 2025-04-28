@@ -9,6 +9,7 @@ use App\Models\Usuario;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreUsuarioRequest;
+use Illuminate\Support\Facades\Log;
 
 class PuertaController extends Controller
 {
@@ -26,6 +27,8 @@ class PuertaController extends Controller
         }else{
           if( Hash::check($request->clave , $encontrado->clave) ){
             Auth::login($encontrado);
+            Log::channel('bitacora')->info('Entro: ' . $request->nombre_usuario);
+
             return redirect(route('puerta.inicio'));
           }else{
             echo "no te sabes la clave";
