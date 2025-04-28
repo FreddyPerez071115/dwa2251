@@ -1,4 +1,4 @@
-@extends('sistema.propuesta')
+@extends('sistema.plantilla')
 @section('contenido')
  <form action="{{route('usuarios.update',$usuario->id)}}" method="post">
   @csrf

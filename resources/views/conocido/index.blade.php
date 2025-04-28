@@ -11,21 +11,19 @@
  @foreach ($todos as $uno)
   {{-- <li>{{$uno}}</li> --}}
    <tr>
-    <td>{{$uno->id}} <a href="{{route('usuarios.show', $uno->id)}}">VER</a>  </td>
+    <td>{{$uno->id}} <a href="{{route('conocidos.show', $uno->id)}}">VER</a>  </td>
     <td>{{$uno->nombre}}</td>
     <td>
       
-      <a href="{{route('usuarios.edit',$uno->id)}}">EDITAR</a>
+      <a href="{{route('conocidos.edit',$uno->id)}}">EDITAR</a>
       - 
-      @can('delete', $uno )
-        <form action="{{route('usuarios.destroy',$uno->id)}}" method="post">
+        <form action="{{route('conocidos.destroy',$uno->id)}}" method="post">
           @csrf
           @method('DELETE')
           <input type="submit" value="BORRAR">
         </form>
 
 
-      @endcan
 
 
 
@@ -34,9 +32,8 @@
  @endforeach
  </tbody>
 </table>
-@can('create',  "App\Models\Usuario" )
-  <a href="{{route('usuarios.create')}}">CREAR</a>    
-@endcan
+
+  <a href="{{route('conocidos.create')}}">CREAR</a>    
 
 
   
