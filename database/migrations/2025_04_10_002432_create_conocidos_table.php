@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->foreignId('usuario_id')->constrained('usuarios');
+            $table->string('archivo')->nullable()->default(null);
             $table->timestamps();
         });
     }

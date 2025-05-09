@@ -8,6 +8,7 @@ use App\Models\Conocido;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 class ConocidoController extends Controller
 {
@@ -42,6 +43,9 @@ class ConocidoController extends Controller
         $datos['usuario_id']=$actual->id;
         $nuevo->fill($datos);
         $nuevo->save();
+        $archivo = $request->file('archivo');
+        $nuevo->archivo= $archivo->store('','privado');
+        $nuevo->save();
         return redirect(route('conocidos.index'));
     }
 
@@ -50,7 +54,19 @@ class ConocidoController extends Controller
      */
     public function show(Conocido $conocido)
     {
-        echo $conocido->toJson();
+        if (Gate::allows('view',$conocido)){
+            if( is_null($conocido->archivo)){
+                echo $conocido->toJson();
+            }elseif(Storage::disk('privado')->exists($conocido->archivo))
+                return response()->file( storage_path('app/archivos') . "/$conocido->archivo");
+            else {
+                echo "Problemas con el archivo.";
+            }    
+        }
+        else
+            return view('sistema.ups');
+
+
     }
 
     /**

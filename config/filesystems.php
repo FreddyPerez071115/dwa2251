@@ -60,6 +60,15 @@ return [
             'report' => false,
         ],
 
+        'publico' => [
+            'driver' => 'local',
+            'root' => public_path('assets/fotos'),
+        ],
+        'privado' => [
+            'driver' => 'local',
+            'root' => storage_path('app/archivos'),
+        ],
+
     ],
 
     /*

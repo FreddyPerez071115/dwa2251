@@ -40,7 +40,7 @@
         <div class="encabezado">
             EMPRESA MENGANO
             <BR>
-                HOLA, {{Auth::user()->nombre}} si quieres salir da <a href="{{route('puerta.salir')}}">click aqui</a>
+                HOLA, {{Auth::user()->nombre}} <img src="{{ route('usuarios.show',Auth::user()->id )  }}" alt=""> si quieres salir da <a href="{{route('puerta.salir')}}">click aqui</a>
         </div>
         <div class="cuerpo">
             <div class="menu">

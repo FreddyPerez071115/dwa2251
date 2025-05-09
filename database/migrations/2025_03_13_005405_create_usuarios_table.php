@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('token')->nullable()->default(null);
             $table->string('correo')->nullable()->default(null);
             $table->string('direccion')->nullable()->default(null);
+            $table->string('foto')->nullable()->default(null);
             $table->timestamps();
         });
     }

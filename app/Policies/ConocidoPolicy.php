@@ -21,7 +21,10 @@ class ConocidoPolicy
      */
     public function view(Usuario $usuario, Conocido $conocido): bool
     {
-        return false;
+        if ($usuario->id == $conocido->usuario_id) 
+            return true;
+        else 
+            return false;
     }
 
     /**
